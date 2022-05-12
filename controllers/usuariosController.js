@@ -15,19 +15,16 @@ const usuariosController = {
       email: email,
       senha: novaSenha,
     });
-    const usuario = Usuario.exists({ email: email });
+    const usuario = await Usuario.exists({ email: email });
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
     if (usuario) {
+      console.log(usuario);
       return res.status(400).json("Usuário já cadastrado!");
     } else {
-      novoUsuario
-        .save()
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((err) => console.log(err));
+      await novoUsuario.save();
+      console.log(novoUsuario);
       return res.status(201).json(novoUsuario);
     }
   },
