@@ -1,9 +1,13 @@
-var express = require('express');
+var express = require("express");
+const usuariosController = require("../controllers/usuariosController");
+const authController = require("../controllers/authController");
+const validarCriacaoUsuario = require("../validations/usuarios/create");
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// Registro de novo usuário
+router.post("/new", usuariosController.registro);
+
+// Login de usuário
+// router.post("/login", authController.login);
 
 module.exports = router;
