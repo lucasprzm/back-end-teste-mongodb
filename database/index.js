@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+require("dotenv/config");
 
 async function hasConnection() {
   try {
     await mongoose.connect(
       "mongodb+srv://lucas_matos:" +
-        secret +
+        process.env.SECRET_KEY_DB +
         "@bootcamp-gama-una.no46g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
     );
     console.log("Banco de dados conectado!");
