@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
+const secret = require("../secret");
 
 async function hasConnection() {
   try {
     await mongoose.connect(
-      "mongodb+srv://lucas_matos:kFz53262spPlFtce@bootcamp-gama-una.no46g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+      "mongodb+srv://lucas_matos:" +
+        secret +
+        "@bootcamp-gama-una.no46g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
     );
     console.log("Banco de dados conectado!");
   } catch (error) {
